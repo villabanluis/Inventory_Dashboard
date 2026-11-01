@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inventory Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Inventory Dashboard</h1>
+  </header>
+
+  <main>
+    <!-- Dashboard stats -->
+    <section class="cards">
+      <div class="card"><span>Total Products</span><strong id="statTotal">0</strong></div>
+      <div class="card"><span>Inventory Value</span><strong id="statValue">0</strong></div>
+      <div class="card warn"><span>Low Stock (10 or less)</span><strong id="statLow">0</strong></div>
+    </section>
+
+    <section class="panel">
+      <h2>Products by Category</h2>
+      <div id="chart"></div>
+    </section>
+
+    <!-- Form (Create / Update) -->
+    <section class="panel">
+      <h2 id="formTitle">Add Product</h2>
+      <form id="productForm">
+        <input type="hidden" id="productId" />
+        <input type="text" id="name" placeholder="Product name" required />
+        <input type="text" id="category" placeholder="Category" required />
+        <input type="number" id="price" placeholder="Price" step="0.01" min="0" required />
+        <input type="number" id="quantity" placeholder="Quantity" min="0" required />
+        <button type="submit" id="saveBtn">Add</button>
+        <button type="button" id="cancelBtn" class="secondary hidden">Cancel</button>
+      </form>
+      <p id="message"></p>
+    </section>
+
+    <!-- Table (Read / Delete) -->
+    <section class="panel">
+      <div class="table-head">
+        <h2>Products</h2>
+        <input type="text" id="search" placeholder="Search..." />
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th><th>Name</th><th>Category</th><th>Price</th><th>Qty</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
